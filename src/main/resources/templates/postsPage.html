@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<header th:insert="blocks/header"></header>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-5" style="color: bisque">This is your posts page</h1>
+        <p class="lead" style="color: bisque">You can create post on this page</p>
+    </div>
+</div>
+<div class="container mt-0">
+    <h1 style="color: bisque">Posts</h1>
+    <form th:method="GET" th:action="@{/posts/add}">
+        <button type="submit" class="btn btn-primary">Add new post</button>
+    </form>
+    <br>
+    <div th:each="post : ${posts}" class="alert alert-secondary mt-0">
+        <h3 th:text="${post.getTitle()}"></h3>
+        <p th:text="${post.getText()}"></p>
+        <p th:text="${post.getTime()}"></p>
+        <form th:method="GET" th:action="@{/posts/{id}/edit(id=${post.getId()})}">
+            <button type="submit" class="btn btn-info">Edit post</button>
+        </form>
+        <br>
+        <form th:method="POST" th:action="@{/posts/{id}/delete(id=${post.getId()})}">
+            <button type="submit" class="btn btn-warning">Delete post</button>
+        </form>
+    </div>
+    <form th:method="POST" th:action="@{/posts/deleteAll}">
+        <button type="submit" class="btn btn-secondary">Delete all posts</button>
+    </form>
+</div>
+</html>

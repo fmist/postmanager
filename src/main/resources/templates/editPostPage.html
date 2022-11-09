@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<header th:insert="blocks/header"></header>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-5" style="color: azure">Editing post</h1>
+        <p class="lead" style="color: azure">Change post title or post text</p>
+    </div>
+</div>
+<div class="container mt-5 mb-5">
+    <h1 style="color: wheat">Editing post</h1>
+    <form th:method="POST" th:action="@{/posts/{id}/edit(id=${post.getId()})}" th:object="${post}">
+        <input type="text" th:field="*{title}" placeholder="Edit post title" class="form-control"/>
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
+        <br>
+        <textarea type="text" th:field="*{text}" placeholder="Edit post text" class="form-control"></textarea>
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('text')}" th:errors="*{text}"></div><br>
+        <button type="submit" class="btn btn-warning">Update post</button>
+    </form>
+</div>
+</html>
