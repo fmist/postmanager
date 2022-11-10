@@ -22,9 +22,8 @@ public class MainController {
     }
 
     @GetMapping("/")
-    public String mainPage(Model model) {
-        model.addAttribute("title", "This is Main Page");
-        return "postsPage";
+    public String mainPage() {
+        return "redirect:/posts";
     }
 
     @GetMapping("/posts")
