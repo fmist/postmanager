@@ -30,6 +30,7 @@ public class Post {
     LocalDateTime timeCreated;
 
     @PrePersist
+    @PreUpdate
     public void getDateTimeCreated() {
         timeCreated = LocalDateTime.now();
     }
