@@ -10,23 +10,23 @@
 <div class="container mt-0">
     <h1 style="color: bisque">Posts</h1>
     <form th:method="GET" th:action="@{/posts/add}">
-        <button type="submit" class="btn btn-primary">Add new post</button>
+        <button type="submit" class="btn btn-primary" id="add">Add new post</button>
     </form>
     <br>
     <div th:each="post : ${posts}" class="alert alert-secondary mt-0">
         <h3 th:text="${post.getTitle()}"></h3>
         <p th:text="${post.getText()}"></p>
-        <p th:text="${post.getTime()}"></p>
+        <p>updated</p><p th:text="${post.getTime()}" th:align="right"></p>
         <form th:method="GET" th:action="@{/posts/{id}/edit(id=${post.getId()})}">
-            <button type="submit" class="btn btn-info">Edit post</button>
+            <button type="submit" class="btn btn-info" id="edit">Edit post</button>
         </form>
         <br>
         <form th:method="POST" th:action="@{/posts/{id}/delete(id=${post.getId()})}">
-            <button type="submit" class="btn btn-warning">Delete post</button>
+            <button type="submit" class="btn btn-warning" id="delete">Delete post</button>
         </form>
     </div>
     <form th:method="POST" th:action="@{/posts/deleteAll}">
-        <button type="submit" class="btn btn-secondary">Delete all posts</button>
+        <button type="submit" class="btn btn-secondary" id="delete_all">Delete all posts</button>
     </form>
 </div>
 </html>
