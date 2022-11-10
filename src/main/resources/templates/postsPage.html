@@ -16,7 +16,7 @@
     <div th:each="post : ${posts}" class="alert alert-secondary mt-0">
         <h3 th:text="${post.getTitle()}"></h3>
         <p th:text="${post.getText()}"></p>
-        <p>Обновлено</p>
+        <p th:align="right">Обновлено</p>
         <p th:text="${post.getTime()}" th:align="right"></p>
         <form th:method="GET" th:action="@{/posts/{id}/edit(id=${post.getId()})}">
             <button type="submit" class="btn btn-info" id="edit">Редактировать</button>
