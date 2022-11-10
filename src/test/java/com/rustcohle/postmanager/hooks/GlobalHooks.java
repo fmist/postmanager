@@ -9,7 +9,7 @@ public class GlobalHooks {
 
     @Before
     public void init() {
-        Configuration.baseUrl="https://192.168.0.110:8083";
+        Configuration.baseUrl = "https://192.168.0.110:8083";
     }
 
     @After
