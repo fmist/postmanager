@@ -3,7 +3,6 @@ package com.rustcohle.postmanager.controllers;
 import com.rustcohle.postmanager.models.Post;
 import com.rustcohle.postmanager.repo.PostRepository;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -62,10 +61,10 @@ public class MainController {
     public String deleteAllPosts(Model model) {
         List<Post> posts = postRepository.findAll();
         List<String> messages = new ArrayList<>();
-        messages.add("Список пуст");
-        messages.add("Нечего удалять!");
-        messages.add("Хватит тыкать!");
-        messages.add("Ты больной?");
+        String listIsEmpty = "Список пуст!";
+        messages.add(listIsEmpty);
+        messages.add(listIsEmpty + "Нечего удалять!");
+        messages.add("Хватит тыкать! " + listIsEmpty);
         String randomMessage = messages.get(new Random().nextInt(messages.size()));
         if (posts.size() == 0) {
             model.addAttribute("message", randomMessage);
