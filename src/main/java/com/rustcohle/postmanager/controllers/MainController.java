@@ -2,6 +2,8 @@ package com.rustcohle.postmanager.controllers;
 
 import com.rustcohle.postmanager.models.Post;
 import com.rustcohle.postmanager.repo.PostRepository;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -28,7 +30,7 @@ public class MainController {
 
     @GetMapping("/posts")
     public String postsPage(Model model) {
-        List<Post> posts = postRepository.findAll();
+        List<Post> posts = postRepository.findAll(Sort.by("timeCreated").descending());
         model.addAttribute("posts", posts);
         return "postsPage";
     }
