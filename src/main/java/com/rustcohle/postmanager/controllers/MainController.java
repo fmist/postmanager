@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Controller
 public class MainController {
@@ -57,9 +59,19 @@ public class MainController {
     }
 
     @PostMapping("/posts/deleteAll")
-    public String deleteAllPosts() {
+    public String deleteAllPosts(Model model) {
+        List<Post> posts = postRepository.findAll();
+        List<String> messages = new ArrayList<>();
+        messages.add("Список пуст");
+        messages.add("Нечего удалять!");
+        messages.add("Хватит тыкать!");
+        messages.add("Ты больной?");
+        String randomMessage = messages.get(new Random().nextInt(messages.size()));
+        if (posts.size() == 0) {
+            model.addAttribute("message", randomMessage);
+        }
         postRepository.deleteAll();
-        return "redirect:/posts";
+        return "postsPage";
     }
 
     @GetMapping("/posts/{id}/edit")
