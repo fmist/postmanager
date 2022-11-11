@@ -11,11 +11,12 @@ public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
+    @Column(name = "title")
     @NotEmpty(message = "Введите имя заголовка (минимум 3 символа)")
     @Size(min = 3, message = "Заголовок должен содержать минимум 3 символа")
     private String title;
 
+    @Column(name = "text", columnDefinition = "text")
     @NotEmpty(message = "Описание не может быть пустым")
     private String text;
 
