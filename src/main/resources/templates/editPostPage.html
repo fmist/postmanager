@@ -14,7 +14,10 @@
         <div id="validate_title" class="alert alert-danger" th:if="${#fields.hasErrors('title')}"
              th:errors="*{title}"></div>
         <br>
-        <textarea id="text" type="text" th:field="*{text}" placeholder="Edit post text" class="form-control"></textarea>
+        <div class="form-floating">
+            <textarea th:field="*{text}" class="form-control" placeholder="Edit post text" id="floatingTextarea" style="height: 100px"></textarea>
+            <label for="floatingTextarea">Comments</label>
+        </div>
         <div id="validate_text" class="alert alert-warning" th:if="${#fields.hasErrors('text')}"
              th:errors="*{text}"></div>
         <br>
