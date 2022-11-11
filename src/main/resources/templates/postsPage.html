@@ -12,6 +12,9 @@
     <form th:method="GET" th:action="@{/posts/add}">
         <button type="submit" class="btn btn-primary btn-sm" id="add">Создать пост</button>
     </form>
+    <form th:method="POST" th:action="@{/posts/deleteAll}" th:align="right">
+        <button type="submit" class="btn btn-secondary btn-sm" id="delete_all">Удалить весь список постов</button>
+    </form>
     <br>
     <div th:each="post : ${posts}" class="alert alert-secondary mt-0">
         <h3 th:text="${post.getTitle()}"></h3>
@@ -27,9 +30,5 @@
             </form>
         </div>
     </div>
-
-    <form th:method="POST" th:action="@{/posts/deleteAll}">
-        <button type="submit" class="btn btn-secondary btn-sm" id="delete_all">Удалить весь список постов</button>
-    </form>
 </div>
 </html>
