@@ -16,12 +16,12 @@
         <br>
         <div class="form-floating">
             <textarea th:field="*{text}" class="form-control" placeholder="Edit post text" id="floatingTextarea" style="height: 100px"></textarea>
-            <label for="floatingTextarea">Comments</label>
+            <label for="floatingTextarea">Edit post text</label>
         </div>
         <div id="validate_text" class="alert alert-warning" th:if="${#fields.hasErrors('text')}"
              th:errors="*{text}"></div>
         <br>
-        <button id="update" type="submit" class="btn btn-outline-dark btn-sm">Сохранить изменения</button>
+        <button id="update" type="submit" class="btn btn-primary btn-sm">Сохранить изменения</button>
     </form>
 </div>
 </html>
