@@ -63,7 +63,7 @@ public class MainController {
         List<String> messages = new ArrayList<>();
         String listIsEmpty = "Список пуст!";
         messages.add(listIsEmpty);
-        messages.add(listIsEmpty + "Нечего удалять!");
+        messages.add(listIsEmpty + " Нечего удалять!");
         messages.add("Хватит тыкать! " + listIsEmpty);
         String randomMessage = messages.get(new Random().nextInt(messages.size()));
         if (posts.size() == 0) {
