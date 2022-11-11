@@ -18,14 +18,16 @@
         <p th:text="${post.getText()}"></p>
         <p th:align="right">Обновлено</p>
         <p th:text="${post.getTime()}" th:align="right"></p>
-        <form th:method="GET" th:action="@{/posts/{id}/edit(id=${post.getId()})}">
-            <button type="submit" class="btn btn-info btn-sm" id="edit">Редактировать</button>
-        </form>
-        <br>
-        <form th:method="POST" th:action="@{/posts/{id}/delete(id=${post.getId()})}">
-            <button type="submit" class="btn btn-warning btn-sm" id="delete">Удалить пост</button>
-        </form>
+        <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+            <form th:method="GET" th:action="@{/posts/{id}/edit(id=${post.getId()})}">
+                <button type="submit" class="btn btn-outline-dark btn-sm" id="edit">Редактировать</button>
+            </form>
+            <form th:method="POST" th:action="@{/posts/{id}/delete(id=${post.getId()})}">
+                <button type="submit" class="btn btn-dark btn-sm" id="delete">Удалить пост</button>
+            </form>
+        </div>
     </div>
+
     <form th:method="POST" th:action="@{/posts/deleteAll}">
         <button type="submit" class="btn btn-secondary btn-sm" id="delete_all">Удалить весь список постов</button>
     </form>
