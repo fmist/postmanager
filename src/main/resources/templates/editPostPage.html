@@ -11,14 +11,14 @@
     <h1 style="color: wheat">Редактирование</h1>
     <form th:method="POST" th:action="@{/posts/{id}/edit(id=${post.getId()})}" th:object="${post}">
         <input id="title" type="text" th:field="*{title}" placeholder="Edit post title" class="form-control"/>
-        <div id="validate_title" class="alert alert-warning" th:if="${#fields.hasErrors('title')}"
+        <div id="validate_title" class="alert alert-danger" th:if="${#fields.hasErrors('title')}"
              th:errors="*{title}"></div>
         <br>
         <textarea id="text" type="text" th:field="*{text}" placeholder="Edit post text" class="form-control"></textarea>
         <div id="validate_text" class="alert alert-warning" th:if="${#fields.hasErrors('text')}"
              th:errors="*{text}"></div>
         <br>
-        <button id="update" type="submit" class="btn btn-warning">Сохранить изменения</button>
+        <button id="update" type="submit" class="btn btn-warning btn-sm">Сохранить изменения</button>
     </form>
 </div>
 </html>
