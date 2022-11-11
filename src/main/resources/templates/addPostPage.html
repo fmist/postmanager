@@ -8,7 +8,6 @@
     </div>
 </div>
 <div class="container mt-5 mb-5">
-    <h1 style="color: wheat">Создание поста</h1>
     <form th:method="POST" th:action="@{/posts/add}" th:object="${post}">
         <input id="title" type="text" th:field="*{title}" placeholder="Fill post title" class="form-control"/>
         <div id="validate_title" class="alert alert-danger" th:if="${#fields.hasErrors('title')}"
