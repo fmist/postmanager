@@ -1,13 +1,13 @@
 pipeline {
     agent any
         tools {
-            gradle "gradle"
+            gradle "GRADLE"
         }
     stages {
         stage('Build') {
              steps {
                 git 'https://github.com/fmist/postmanager.git'
-                sh "./gradlew clean build -DskipTests"
+                sh "gradle clean build -DskipTests"
              }
         }
         stage('Docker build') {
