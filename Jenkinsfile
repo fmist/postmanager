@@ -3,9 +3,6 @@ pipeline {
         tools {
             gradle "gradle"
         }
-        environment {
-            DOCKERHUB_CREDENTIALS= credentials('pass')
-        }
     stages {
         stage('Build') {
              steps {
