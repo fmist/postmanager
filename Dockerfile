@@ -1,3 +1,4 @@
-FROM adoptopenjdk/openjdk11
+FROM openjdk:11
+ARG JAR_FILE
 COPY ${JAR_FILE} app.jar
-CMD ["java","-jar", "app.jar"]
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
