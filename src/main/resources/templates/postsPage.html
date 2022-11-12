@@ -4,16 +4,15 @@
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
         <h1 class="display-5" style="color: bisque">Пост менеджер</h1>
-        <p class="lead" style="color: bisque">Создайте свой первый пост прямо сейчас!</p>
+        <p class="lead" style="color: bisque">Создайте пост</p>
     </div>
 </div>
 <div class="container">
     <h1 style="color: bisque">Список постов</h1>
-    <form th:method="POST" th:action="@{/posts/deleteAll}" th:align="left">
+    <form th:method="POST" th:action="@{/posts/deleteAll}" th:align="right">
         <button type="submit" class="btn btn-secondary btn-sm" id="delete_all">Удалить весь список постов</button>
         <p th:text="${message}" style="color : greenyellow"></p>
     </form>
-    <br>
     <form th:method="GET" th:action="@{/posts/add}" th:align="left">
         <button type="submit" class="btn btn-primary btn-sm" id="add">Создать пост</button>
     </form>

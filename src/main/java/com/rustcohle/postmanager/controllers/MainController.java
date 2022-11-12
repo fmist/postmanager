@@ -51,7 +51,7 @@ public class MainController {
         return "redirect:/posts";
     }
 
-    @PostMapping("/posts/{id}/delete")
+    @PostMapping("/posts/{id}/delete")  
     public String deletePost(@PathVariable Long id) {
         postRepository.deleteById(id);
         return "redirect:/posts";
@@ -60,13 +60,13 @@ public class MainController {
     @PostMapping("/posts/deleteAll")
     public String deleteAllPosts(Model model) {
         List<Post> posts = postRepository.findAll();
-        List<String> messages = new ArrayList<>();
-        String listIsEmpty = "Список пуст!";
-        messages.add(listIsEmpty);
-        messages.add(listIsEmpty + " Нечего удалять!");
-        messages.add("Хватит тыкать! " + listIsEmpty);
-        String randomMessage = messages.get(new Random().nextInt(messages.size()));
         if (posts.size() == 0) {
+            List<String> messages = new ArrayList<>();
+            String listIsEmpty = "Список пуст!";
+            messages.add(listIsEmpty);
+            messages.add(listIsEmpty + " Нечего удалять!");
+            messages.add("Хватит тыкать! " + listIsEmpty);
+            String randomMessage = messages.get(new Random().nextInt(messages.size()));
             model.addAttribute("message", randomMessage);
         }
         postRepository.deleteAll();
