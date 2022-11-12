@@ -12,6 +12,7 @@ pipeline {
         }
         stage('Docker build') {
            steps {
+           agent any
                 sh 'docker build --tag=post:latest .'
                 sh 'docker run -p8887:8083 post:latest'
             }
