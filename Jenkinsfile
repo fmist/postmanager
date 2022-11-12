@@ -11,9 +11,8 @@ pipeline {
              }
         }
         stage('Docker build') {
-        agent any
            steps {
-                sh 'docker build --tag=post:latest .'
+                sh 'sudo docker build -t <fmist>/<dckr_pat_zSn9mAYwkaeVLFXiAYo2coim9bE>:$post .'
                 sh 'docker run -p8887:8083 post:latest'
             }
         }
