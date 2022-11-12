@@ -7,7 +7,7 @@ pipeline {
         stage('Build') {
              steps {
                 git 'https://github.com/fmist/postmanager.git'
-                sh "gradle clean build -DskipTests"
+                sh "./gradlew clean build -DskipTests"
              }
         }
         stage('Docker build') {
