@@ -3,6 +3,9 @@ pipeline {
         tools {
             gradle "gradle"
         }
+        environment {
+            DOCKERHUB_CREDENTIALS= credentials('pass')
+        }
     stages {
         stage('Build') {
              steps {
@@ -12,8 +15,20 @@ pipeline {
         }
         stage('Docker build') {
            steps {
-                sh 'sudo docker build -t <fmist>/<dckr_pat_zSn9mAYwkaeVLFXiAYo2coim9bE>:$post .'
-                sh 'docker run -p8887:8083 post:latest'
+               sh 'sudo docker build -t fmist/post:$BUILD_NUMBER .'
+               echo 'Build Image Completed'
+           }
+        }
+        stage('Login to Docker Hub') {
+              steps{
+        	sh 'echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+        	echo 'Login Completed'
+            }
+        }
+        stage('Push Image to Docker Hub') {
+              steps{
+        	sh 'sudo docker push fmist/post:$BUILD_NUMBER'
+        	echo 'Push Image Completed'
             }
         }
     }
