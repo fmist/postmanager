@@ -10,10 +10,14 @@ pipeline {
                 sh "gradle clean build -DskipTests"
              }
         }
-        stage('Deploy') {
+        stage('Docker build') {
             steps {
-                docker build --tag=app:latest .
-                docker run -p8887:8883 app:latest  
+                sh 'docker build --tag=app:latest .'
+            }
+        }
+        stage('Docker run') {
+            steps {
+            sh 'docker run -p8887:8883 app:latest'
             }
         }
     }
