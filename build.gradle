@@ -5,13 +5,13 @@ plugins {
     id 'com.palantir.docker' version '0.19.2'
 }
 
-//String imageName = "$project.name"
-//docker {
-//    dockerfile file('Dockerfile')
-//    name imageName
-//    files bootJar.archiveFile.get()
-//    buildArgs(['JAR_FILE': "${bootJar.archiveFileName.get()}"])
-//}
+String imageName = "$project.name"
+docker {
+    dockerfile file('Dockerfile')
+    name imageName
+    files bootJar.archiveFile.get()
+    buildArgs(['JAR_FILE': "${bootJar.archiveFileName.get()}"])
+}
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
