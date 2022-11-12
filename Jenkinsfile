@@ -12,13 +12,13 @@ pipeline {
         }
         stage('Docker build') {
            steps {
-               sh 'sudo docker build -t fmist/post:latest .'
+               sh 'docker build --tag=post:latest .'
                echo 'Build Image Completed'
            }
         }
         stage('Docker run') {
               steps{
-        	sh 'sudo docker run -p8887:8083 post:latest'
+        	sh 'docker run -p8887:8083 post:latest'
         	echo 'Run completed'
             }
         }
