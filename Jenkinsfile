@@ -12,12 +12,12 @@ pipeline {
         }
         stage('Build Docker image') {
             steps {
-                bat 'docker build --tag=post:latest .'
+                bat 'docker build --tag=app:latest .'
             }
         }
         stage('Run docker image') {
             steps {
-                bat 'docker run -p8887:8083 post:latest'
+                bat 'docker run -p8887:8083 app:latest'
             }
         }
     }
