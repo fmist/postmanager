@@ -12,28 +12,8 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sshPublisher(
-                publishers:
-                [sshPublisherDesc
-                (configName: 'deploy',
-                transfers:
-                [sshTransfer
-                (cleanRemote: false,
-                excludes: '',
-                execCommand: '/home/mac/app.sh',
-                execTimeout: 120000, flatten: false,
-                makeEmptyDirs: false,
-                noDefaultExcludes: false,
-                patternSeparator: '[, ]+',
-                remoteDirectory: '/app',
-                remoteDirectorySDF: false,
-                removePrefix: 'build/libs',
-                sourceFiles: 'build/libs/*.jar',
-                usePty: true)],
-                usePromotionTimestamp: false,
-                useWorkspaceInPromotion: false,
-                verbose: false
-                )])
+                docker build --tag=app:latest .
+                docker run -p8887:8883 app:latest  
             }
         }
     }
