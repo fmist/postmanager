@@ -11,7 +11,6 @@ docker {
     name imageName
     files bootJar.archiveFile.get()
     buildArgs(['JAR_FILE': "${bootJar.archiveFileName.get()}"])
-    println ${bootJar.archiveFileName.get()}
 }
 
 group = 'com.example'
