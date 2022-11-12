@@ -15,20 +15,14 @@ pipeline {
         }
         stage('Docker build') {
            steps {
-               sh 'sudo docker build -t fmist/post:$BUILD_NUMBER .'
+               sh 'sudo docker build -t fmist/post:latest .'
                echo 'Build Image Completed'
            }
         }
-        stage('Login to Docker Hub') {
+        stage('Docker run') {
               steps{
-        	sh 'echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-        	echo 'Login Completed'
-            }
-        }
-        stage('Push Image to Docker Hub') {
-              steps{
-        	sh 'sudo docker push fmist/post:$BUILD_NUMBER'
-        	echo 'Push Image Completed'
+        	sh 'sudo docker run -p8887:8083 post:latest'
+        	echo 'Run completed'
             }
         }
     }
