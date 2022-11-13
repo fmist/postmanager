@@ -29,12 +29,6 @@ pipeline {
                 sh 'gradle dockerRun'
             }
         }
-
-        stage('Delete unused images') {
-            steps {
-                sh 'docker image prune --all -f'
-            }
-        }
     }
       post {
           always {
