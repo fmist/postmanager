@@ -31,6 +31,14 @@ dockerRun {
     clean false
 }
 
+dockerStop {
+
+}
+dockerRemoveContainer {
+}
+
+
+
 configurations {
     developmentOnly
     runtimeClasspath {
