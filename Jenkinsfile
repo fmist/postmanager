@@ -15,6 +15,7 @@ pipeline {
              steps {
                bat 'gradle dockerStop'
                bat 'gradle dockerRemoveContainer'
+               bat 'docker image prune --all'
              }
         }
 
