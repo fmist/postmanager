@@ -12,12 +12,12 @@ pipeline {
         }
         stage('Build Docker image') {
             steps {
-                bat 'docker build --tag=app:latest .'
+                bat 'docker build -t app.jar .'
             }
         }
         stage('Run docker image') {
             steps {
-                bat 'docker run -p8887:8083 app:latest'
+                bat 'docker run -p8887:8083 app.jar'
             }
         }
     }
