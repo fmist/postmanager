@@ -6,6 +6,11 @@ plugins {
     id 'com.palantir.docker-run' version '0.22.1'
 }
 
+def properties = new Properties()
+file("src/main/resources/application.properties").withInputStream {
+    stream -> properties.load(stream)
+}
+
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 
@@ -15,7 +20,7 @@ repositories {
 String imageName = "${project.name}:${project.version}"
 
 docker {
-    //dependsOn build
+    dependsOn build
     dockerfile file('Dockerfile')
     name imageName
     files bootJar.outputs
@@ -25,7 +30,7 @@ docker {
 dockerRun {
     name "${project.name}-container"
     image imageName
-    ports "8887:8083"
+    ports "8887:${properties.get("server.port")}"
     env 'SPRING_PROFILES_ACTIVE': 'dev'
     daemonize true
     clean true
