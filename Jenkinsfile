@@ -7,32 +7,32 @@ pipeline {
         stage('Build') {
             steps {
                 git 'https://github.com/fmist/postmanager.git'
-                bat "gradle clean build -DskipTests"
+                sh "gradle clean build -DskipTests"
             }
         }
 
         stage('Prepare container') {
              steps {
-               bat 'gradle dockerStop'
-               bat 'gradle dockerRemoveContainer'
+               sh 'gradle dockerStop'
+               sh 'gradle dockerRemoveContainer'
              }
         }
 
         stage('Build Docker image') {
             steps {
-                bat 'gradle docker'
+                sh 'gradle docker'
             }
         }
 
         stage('Run docker container') {
             steps {
-                bat 'gradle dockerRun'
+                sh 'gradle dockerRun'
             }
         }
 
         stage('Delete unused images') {
             steps {
-                bat 'docker image prune --all -f'
+                sh 'docker image prune --all -f'
             }
         }
     }
