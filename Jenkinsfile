@@ -15,11 +15,11 @@ pipeline {
                 bat 'gradle docker'
             }
         }
-//         stage('Run docker image') {
-//             steps {
-//                 bat 'docker run -p8887:8083 app.jar'
-//             }
-//         }
+        stage('Run docker image') {
+            steps {
+                bat 'gradle dockerRun'
+            }
+        }
     }
       post {
           always {
