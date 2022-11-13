@@ -17,7 +17,12 @@ pipeline {
         }
         stage('Remove container') {
             steps {
-                bat "docker rm --force post-manager-container"
+                bat "docker rm $(docker ps -a -q)"
+            }
+        }
+        stage('Remove image') {
+            steps {
+                bat "docker rmi $(docker images -q)"
             }
         }
         stage('Run docker container') {
