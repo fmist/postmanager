@@ -25,7 +25,7 @@ docker {
 dockerRun {
     name "${project.name}-container"
     image imageName
-    ports "8887:${server.port}"
+    ports "8887:8083"
     env 'SPRING_PROFILES_ACTIVE': 'dev'
     daemonize true
     clean true
