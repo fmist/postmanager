@@ -16,7 +16,7 @@ docker {
     //dependsOn build
     dockerfile file('Dockerfile')
     name imageName
-    files bootJar.archiveFile.get()
+    files bootJar.outputs
     buildArgs(['JAR_FILE': "${bootJar.archiveFileName.get()}"])
 }
 
