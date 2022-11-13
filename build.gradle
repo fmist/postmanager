@@ -17,6 +17,7 @@ version = '0.0.1-SNAPSHOT'
 repositories {
     mavenCentral()
 }
+
 String imageName = "${project.name}:${project.version}"
 
 docker {
@@ -33,6 +34,10 @@ dockerRun {
     ports "8887:${properties.get("server.port")}"
     daemonize true
     clean true
+}
+
+dockerRunStatus {
+
 }
 
 dockerStop {
