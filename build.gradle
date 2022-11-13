@@ -25,10 +25,15 @@ docker {
 dockerRun {
     name "${project.name}-container"
     image imageName
-    ports '8887:8083'
+    ports "8887:8083"
     env 'SPRING_PROFILES_ACTIVE': 'dev'
     daemonize true
     clean false
+}
+
+task startMyAppContainer(type: DockerStartContainer) {
+    dependsOn createMyAppContainer
+    targetContainerId createMyAppContainer.getContainerId()
 }
 
 configurations {

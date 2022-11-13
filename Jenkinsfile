@@ -15,6 +15,11 @@ pipeline {
                 bat 'gradle docker'
             }
         }
+        stage('Remove container') {
+            steps {
+            bat "docker rm --force post-manager-container"
+            }
+        }
         stage('Run docker image') {
             steps {
                 bat 'gradle dockerRun'
