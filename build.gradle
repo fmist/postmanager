@@ -12,6 +12,14 @@ repositories {
     mavenCentral()
 }
 
+docker {
+    //dependsOn build
+    dockerfile file('Dockerfile')
+    name imageName
+    files bootJar.archiveFile.get()
+    buildArgs(['JAR_FILE': "${bootJar.archiveFileName.get()}"])
+}
+
 configurations {
     developmentOnly
     runtimeClasspath {
