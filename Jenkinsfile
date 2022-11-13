@@ -17,12 +17,12 @@ pipeline {
         }
         stage('Remove container') {
             steps {
-                bat "docker rm $(docker ps -a -q)"
+                bat 'docker rm $(docker ps -a -q)'
             }
         }
         stage('Remove image') {
             steps {
-                bat "docker rmi $(docker images -q)"
+                bat 'docker rmi $(docker images -q)'
             }
         }
         stage('Run docker container') {
