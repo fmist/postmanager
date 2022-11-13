@@ -13,8 +13,8 @@ pipeline {
 
         stage('Prepare container') {
              steps {
-               bat 'dockerStop'
-               bat 'dockerRemoveContainer'
+               bat 'gradle dockerStop'
+               bat 'gradle dockerRemoveContainer'
              }
         }
 
