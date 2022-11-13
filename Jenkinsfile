@@ -15,7 +15,6 @@ pipeline {
              steps {
                bat 'gradle dockerStop'
                bat 'gradle dockerRemoveContainer'
-               bat 'docker image prune --all'
              }
         }
 
@@ -28,6 +27,12 @@ pipeline {
         stage('Run docker container') {
             steps {
                 bat 'gradle dockerRun'
+            }
+        }
+
+        stage('Delete unused images') {
+            steps {
+                bat 'docker image prune --all -f'
             }
         }
     }
