@@ -11,7 +11,7 @@ version = '0.0.1-SNAPSHOT'
 repositories {
     mavenCentral()
 }
-
+String imageName = "${project.name}:${project.version}"
 docker {
     //dependsOn build
     dockerfile file('Dockerfile')
