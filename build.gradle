@@ -31,11 +31,6 @@ dockerRun {
     clean false
 }
 
-task startMyAppContainer(type: DockerStartContainer) {
-    dependsOn createMyAppContainer
-    targetContainerId createMyAppContainer.getContainerId()
-}
-
 configurations {
     developmentOnly
     runtimeClasspath {
