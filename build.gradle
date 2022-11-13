@@ -12,6 +12,7 @@ repositories {
     mavenCentral()
 }
 String imageName = "${project.name}:${project.version}"
+
 docker {
     //dependsOn build
     dockerfile file('Dockerfile')
