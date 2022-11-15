@@ -38,9 +38,7 @@ public class Post {
 
     public String getTime() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yy HH:mm:ss");
-        String time = formatter.format(timeCreated);
-        if (time == null) return "No info";
-        return time;
+        return formatter.format(timeCreated);
     }
 
     public Long getId() {
